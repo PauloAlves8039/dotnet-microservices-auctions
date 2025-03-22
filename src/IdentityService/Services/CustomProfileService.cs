@@ -15,7 +15,7 @@ public class CustomProfileService : IProfileService
     {
         _userManager = userManager;
     }
-    
+
     public async Task GetProfileDataAsync(ProfileDataRequestContext context)
     {
         var user = await _userManager.GetUserAsync(context.Subject);
