@@ -9,6 +9,7 @@ import Filters from "./Filters";
 import { useShallow } from "zustand/react/shallow";
 import { useParamsStore } from "../hooks/useParamsStore";
 import qs from "query-string";
+import EmptyFilter from "../components/EmptyFilter";
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
@@ -16,7 +17,9 @@ export default function Listings() {
   const params = useParamsStore(useShallow(state => ({
       pageNumber: state.pageNumber,
       pageSize: state.pageSize,
-      searchTerm: state.searchTerm
+      searchTerm: state.searchTerm,
+      orderBy: state.orderBy,
+      filterBy: state.filterBy
   })));
 
   const setParams = useParamsStore(state => state.setParams);
@@ -38,18 +41,24 @@ export default function Listings() {
     <>
       <Filters />
       
-      <div className="grid grid-cols-4 gap-6">
-        {data.results.map(auction => (
-          <AuctionCard auction={auction} key={auction.id} />
-        ))}
-      </div>
-      <div className="flex justify-center">
-        <AppPagination
-          currentPage={params.pageNumber}
-          pageCount={data.pageCount}
-          pageChanged={setPageNumber}
-        />
-      </div>
+      {data.totalCount === 0 ? (
+        <EmptyFilter showReset/>
+      ) : (
+        <>
+            <div className="grid grid-cols-4 gap-6">
+              {data.results.map(auction => (
+                <AuctionCard auction={auction} key={auction.id} />
+              ))}
+            </div>
+            <div className="flex justify-center">
+              <AppPagination
+                currentPage={params.pageNumber}
+                pageCount={data.pageCount}
+                pageChanged={setPageNumber}
+              />
+            </div>
+        </>
+      )}
     </>
   )
 }
