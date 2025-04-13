@@ -1,4 +1,5 @@
 using AuctionService.Data;
+using AuctionService.IntegrationTests.Util;
 using MassTransit;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -44,6 +45,7 @@ public class CustomWebAppFactory : WebApplicationFactory<Program>, IAsyncLifetim
             var db = scopeServices.GetRequiredService<AuctionDbContext>();
 
             db.Database.Migrate();
+            DbHelper.InitDbForTests(db);
 
         });
     }
