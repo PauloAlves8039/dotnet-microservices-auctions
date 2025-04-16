@@ -71,3 +71,5 @@ app.MapControllers();
 app.MapGrpcService<GrpcAuctionService>();
 
 app.Run();
+
+public partial class Program { }
