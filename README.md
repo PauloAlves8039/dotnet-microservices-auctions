@@ -64,9 +64,13 @@ docker compose build
 # Once this completes you can use the following to run the services:
 docker compose up -d
 ```
-## 📫 Example Request
+## 📫 Requests
 
-Use a tool to interact with the API endpoints, `Postman` was used in the course. 
+Use a tool to interact with the API endpoints. `Postman` was used throughout the course.
+
+You can use this [requests](https://github.com/PauloAlves8039/dotnet-microservices-auctions/tree/master/Resources/Requests/Postman) collection as a backup to import directly into `Postman`.
+
+Note: All requests are already pre-configured.
 
 ## 📘 Notes
 ```bash
@@ -81,7 +85,11 @@ Password: guest
 There are several tools available to access the databases, including `Visual Studio Code` extensions that make the process much easier. I'll mention two examples of tools for accessing the databases:
 
 - PostgreSQL: [DBeaver](https://dbeaver.io/download/)
-- MongoDB: [Compass](https://www.mongodb.com/try/download/compass)  
+- MongoDB: [Compass](https://www.mongodb.com/try/download/compass)
+
+## 📗 Documentations
+
+The course provided [documentations](https://github.com/PauloAlves8039/dotnet-microservices-auctions/tree/master/Resources/Documentations) to support the project development. It's important to read through it carefully.
 
 ## 👤 Author
 
