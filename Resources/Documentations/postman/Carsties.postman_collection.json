@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "40ff14df-6228-4fc6-8311-13dd5f961e0b",
+		"_postman_id": "c019ebd5-bed6-49ea-a584-086e91bfe502",
 		"name": "Carsties",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "39374521"
+		"_exporter_id": "2726016"
 	},
 	"item": [
 		{
@@ -115,8 +115,7 @@
 									"",
 									"pm.collectionVariables.set(\"createdItemId\", jsonData.id);"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						},
 						{
@@ -128,8 +127,7 @@
 									"var dateString = date.toISOString();",
 									"pm.variables.set(\"dateString\", dateString);"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -372,8 +370,7 @@
 									"    pm.expect(jsonData).to.haveOwnProperty('totalCount');",
 									"})"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -872,8 +869,7 @@
 									"pm.collectionVariables.set(\"createdItemMileage\", jsonData.mileage);",
 									"pm.collectionVariables.set(\"createdItemModel\", jsonData.model);"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						},
 						{
@@ -885,8 +881,7 @@
 									"var dateString = date.toISOString();",
 									"pm.variables.set(\"dateString\", dateString);"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -895,7 +890,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"make\": \"Ford\",\n  \"model\": \"Foo\",\n  \"color\": \"{{$randomColor}}\",\n  \"year\": \"2020\",\n  \"mileage\": \"{{$randomInt}}\",\n  \"imageUrl\": \"https://cdn.pixabay.com/photo/2018/02/04/15/45/car-3130111_960_720.jpg\",\n  \"reservePrice\": {{$randomInt}},\n  \"auctionEnd\": \"{{dateString}}\"\n}",
+							"raw": "{\n  \"make\": \"Ford\",\n  \"model\": \"{{$guid}}\",\n  \"color\": \"{{$randomColor}}\",\n  \"year\": \"2020\",\n  \"mileage\": \"{{$randomInt}}\",\n  \"imageUrl\": \"https://cdn.pixabay.com/photo/2018/02/04/15/45/car-3130111_960_720.jpg\",\n  \"reservePrice\": {{$randomInt}},\n  \"auctionEnd\": \"{{dateString}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2510,7 +2505,7 @@
 							"response": []
 						},
 						{
-							"name": "Create new Auction as bob",
+							"name": "Create new Auction as Bob",
 							"event": [
 								{
 									"listen": "test",
@@ -2529,8 +2524,7 @@
 											"",
 											"pm.collectionVariables.set(\"createdItemId\", jsonData.id);"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								},
 								{
@@ -2542,8 +2536,7 @@
 											"var dateString = date.toISOString();",
 											"pm.variables.set(\"dateString\", dateString);"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2590,45 +2583,9 @@
 										"exec": [
 											"var response = pm.response.json();",
 											"",
-											"pm.collectionVariables.set(\"AliceToken\", response.access_token);",
-											"",
-											"pm.test(\"Response status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response time is within an acceptable range\", function () {",
-											"  pm.expect(pm.response.responseTime).to.be.below(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response schema for required fields\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData).to.be.an('object');",
-											"    pm.expect(responseData.access_token).to.exist;",
-											"    pm.expect(responseData.expires_in).to.exist;",
-											"    pm.expect(responseData.token_type).to.exist;",
-											"    pm.expect(responseData.scope).to.exist;",
-											"});",
-											"",
-											"",
-											"pm.test(\"Access token is a non-empty string\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.access_token).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Access token should not be empty\");",
-											"});",
-											"",
-											"",
-											"pm.test(\"Expires_in is a positive integer\", function () {",
-											"  const responseData = pm.response.json();",
-											"  pm.expect(responseData.expires_in).to.be.a('number').and.to.be.above(0);",
-											"});",
-											"",
-											""
+											"pm.collectionVariables.set(\"AliceToken\", response.access_token);"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2746,7 +2703,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{AliceToken}}",
+											"value": "{{BobToken}}",
 											"type": "string"
 										}
 									]
