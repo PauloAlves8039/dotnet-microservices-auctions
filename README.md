@@ -63,7 +63,23 @@ docker compose build
 
 # Once this completes you can use the following to run the services:
 docker compose up -d
+
+# After starting the containers, you need to complete the authentication and authorization process before testing the requests.
+# This can be done at the following URL:
+http://localhost:5000/
 ```
+
+
+## 🌎 Developed Services and Their URLs
+
+| Service            | URL                      |
+|--------------------|--------------------------|
+| Auction Service    | http://localhost:7001    |
+| Search Service     | http://localhost:7002    |
+| Bidding Service    | http://localhost:7003    |
+| Identity Service   | http://localhost:5000    |
+| Gateway Service    | http://localhost:6001    |
+
 ## 📫 Requests
 
 Use a tool to interact with the API endpoints. `Postman` was used throughout the course.
